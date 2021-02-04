@@ -7,6 +7,11 @@
 
 ## Laboratorio – Programación concurrente, condiciones de carrera y sincronización de hilos - Caso Inmortales
 
+### Participantes
+
+1. Nikolas Bernal
+2. Santiago Martínez 
+
 ### Descripción
 Este laboratorio tiene como fin que el estudiante conozca y aplique conceptos propios de la programación concurrente, además de estrategias que eviten condiciones de carrera.
 ### Dependencias:
