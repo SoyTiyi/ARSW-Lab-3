@@ -39,7 +39,7 @@ Control de hilos con wait/notify. Productor/consumidor.
 		![](./img/Productor.png)
 
 	* Clase Consumidor más lenta:
-		![](./img/Consumidor.png)
+	![](./img/Consumidor.png)
 
 	* VisualVM
 		![](./img/VisualVm.png)
