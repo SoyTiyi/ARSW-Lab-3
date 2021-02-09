@@ -92,8 +92,8 @@ Sincronización y Dead-Locks.
 	> ![](img/resume.png)
 
 	> Stop:
-	
-	> ![](img/setResume.png)
+
+	> ![](img/setStop.png)
 
 5. Verifique nuevamente el funcionamiento (haga clic muchas veces en el botón). Se cumple o no el invariante?.
 
