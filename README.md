@@ -73,11 +73,26 @@ Sincronización y Dead-Locks.
 
 2. Revise el código e identifique cómo se implemento la funcionalidad antes indicada. Dada la intención del juego, un invariante debería ser que la sumatoria de los puntos de vida de todos los jugadores siempre sea el mismo(claro está, en un instante de tiempo en el que no esté en proceso una operación de incremento/reducción de tiempo). Para este caso, para N jugadores, cual debería ser este valor?.
 
+	> Si nos dirigimos a la clase ControlFrame, la cual nos desplega la  vista, podemos ver que tenemos una variable final la cual nos 	 indica el valor por DEFAULT de la vida de cada immortal, el cual  es 100, entonces si tenemos en cuenta esto, la cantidad de puntos  totales de vida seria 100 por la cantidad de inmortales que es N
+
 3. Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?.
+
+	> No cumple la invariante ya que esta siempre se esta sumando y no  cumple con la propiedad N*100
 
 4. Una primera hipótesis para que se presente la condición de carrera para dicha función (pause and check), es que el programa consulta la lista cuyos valores va a imprimir, a la vez que otros hilos modifican sus valores. Para corregir esto, haga lo que sea necesario para que efectivamente, antes de imprimir los resultados actuales, se pausen todos los demás hilos. Adicionalmente, implemente la opción ‘resume’.
 
+	> Se implemento un booleano stop, con el cual se maneja el pause de  los hilos y para reanudarlos se utilizó el metodo notifyAll en un metodo synchronized
+
+	> Check And Pause:
+	> ![](img/resumecheck.png)
+	> Resume:
+	> ![](img/resume.png)
+	> Stop:
+	> ![](img/setResume.png)
+
 5. Verifique nuevamente el funcionamiento (haga clic muchas veces en el botón). Se cumple o no el invariante?.
+
+	> No, ya que no hemos implementado un blockeo en la suma y resta de la vida, lo que hace que la invariante no se cumpla
 
 6. Identifique posibles regiones críticas en lo que respecta a la pelea de los inmortales. Implemente una estrategia de bloqueo que evite las condiciones de carrera. Recuerde que si usted requiere usar dos o más ‘locks’ simultáneamente, puede usar bloques sincronizados anidados:
 
@@ -91,15 +106,28 @@ Sincronización y Dead-Locks.
 
 7. Tras implementar su estrategia, ponga a correr su programa, y ponga atención a si éste se llega a detener. Si es así, use los programas jps y jstack para identificar por qué el programa se detuvo.
 
+	> ![](img/jps.png)
+
 8. Plantee una estrategia para corregir el problema antes identificado (puede revisar de nuevo las páginas 206 y 207 de _Java Concurrency in Practice_).
 
 9. Una vez corregido el problema, rectifique que el programa siga funcionando de manera consistente cuando se ejecutan 100, 1000 o 10000 inmortales. Si en estos casos grandes se empieza a incumplir de nuevo el invariante, debe analizar lo realizado en el paso 4.
+
+	> 100
+	> ![](img/100Inmortals.png)
+
+	> 1000
+	> ![](img/1000Inmortals.png)
+
+	> 10000
+	> ![](img/10000inmortals.png)
 
 10. Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
 	* Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? Implemente la funcionalidad, ejecute la simulación y observe qué problema se presenta cuando hay muchos 'inmortales' en la misma. Escriba sus conclusiones al respecto en el archivo RESPUESTAS.txt.
 	* Corrija el problema anterior __SIN hacer uso de sincronización__, pues volver secuencial el acceso a la lista compartida de inmortales haría extremadamente lenta la simulación.
 
 11. Para finalizar, implemente la opción STOP.
+
+	> Para implementar el boton STOP, se utilizó el metodo que setBool, es metodo lo que hara es que al momento de que se le pase el parametro false, ya ningun hilo podra ejecutar el bloque de codigo del metodo run ya que no entra al while
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />Este contenido hace parte del curso Arquitecturas de Software del programa de Ingeniería de Sistemas de la Escuela Colombiana de Ingeniería, y está licenciado como <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.

@@ -1,0 +1,4 @@
+No, ya que si nosotros al evaluar la vida de cada inmortal y tener una variable que nos permita detener el thread en el
+momento que este ya este muerto, nos garantiza que la integridad de la data compartida no se altere y gracias a esto no tengamos 
+una condición de carrera, esto porque el while que es encuentra en el metodo run ya dejo de ser siempre true y se cambio por la
+variable Atomocia Booleana para que en el momento en donde esta pase a ser false, se deje de realizar esa porción de codigo
