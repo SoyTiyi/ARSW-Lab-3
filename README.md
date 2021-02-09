@@ -84,10 +84,15 @@ Sincronización y Dead-Locks.
 	> Se implemento un booleano stop, con el cual se maneja el pause de  los hilos y para reanudarlos se utilizó el metodo notifyAll en un metodo synchronized
 
 	> Check And Pause:
+
 	> ![](img/resumecheck.png)
+
 	> Resume:
+
 	> ![](img/resume.png)
+
 	> Stop:
+	
 	> ![](img/setResume.png)
 
 5. Verifique nuevamente el funcionamiento (haga clic muchas veces en el botón). Se cumple o no el invariante?.
@@ -113,12 +118,15 @@ Sincronización y Dead-Locks.
 9. Una vez corregido el problema, rectifique que el programa siga funcionando de manera consistente cuando se ejecutan 100, 1000 o 10000 inmortales. Si en estos casos grandes se empieza a incumplir de nuevo el invariante, debe analizar lo realizado en el paso 4.
 
 	> 100
+
 	> ![](img/100Inmortals.png)
 
 	> 1000
+
 	> ![](img/1000Inmortals.png)
 
 	> 10000
+
 	> ![](img/10000inmortals.png)
 
 10. Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
